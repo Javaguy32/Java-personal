@@ -11,6 +11,21 @@ public class GroceryStoreController {
     @Autowired
     private GroceryStoreService groceryStoreService;
 
+    @GetMapping("/getStores/{id}")
+    public ResponseEntity<List<GroceryStore>> getStores(@PathParam("id") long id){
+        gorceryStoreService.getStores(id);
+    }
+
+    @PostMapping("/addStore")
+    public ResponseEntity<String> addStore(@RequestBody GroceryStore store){
+        groceryStoreService.addStore(store);
+    }
+
+    @DeleteMapping("/removeStore/{id}")
+    public ResponseEntity<String> removeStore(@PathParam("id") long storeId){
+        groceryStoreService.removeStore(storeId);
+    }
+
 }
 
 @RestController
@@ -20,6 +35,20 @@ public class RestaurantController {
     @Autowired
     private RestaurantService restaurantService;
 
+    @GetMapping("/getRest/{id}")
+    public ResponseEntity<List<Restaurant>> getRest(@PathParam("id") long id){
+        restaurantService.getRest(id);
+    }
+
+    @PostMapping("/addRest")
+    public ResponseEntity<String> addRest(@RequestBody Restaurant rest){
+        restaurantService.addRest(rest);
+    }
+
+    @DeleteMapping("/removeRest/{id}")
+    public ResponseEntity<String> removeRest(@PathParam("id") long restId){
+        restaurantService.removeRest(restId);
+    }
 
 }
 
